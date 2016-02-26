@@ -5,7 +5,7 @@ UbiMap demo
 ![alt phone](http://ubirouting.com/imageUse/UbiMap.gif)
 
 
-获取识途矢量地图SDK（获取SDK请联系 contact@ubirouting.com )
+获取识途矢量地图SDK：[https://github.com/UbiroutingDevelop/UbiMap_iOS-SDK.git](https://github.com/UbiroutingDevelop/UbiMap_iOS-SDK.git)
 
 - include文件夹，内包含所需头文件
 - libSTUBIMap.a
