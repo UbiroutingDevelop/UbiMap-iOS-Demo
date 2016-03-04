@@ -9,16 +9,26 @@
 #import "ViewController.h"
 #import "UbiMapDownloader.h"
 #import "UbiMapView.h"
+#import "UbiMapModel.h"
+#import "UbiMapArea.h"
+#import "UbiMapMark.h"
+
 
 #define HEIGHT self.view.frame.size.height
 
 #define WIDTH  self.view.frame.size.width
 
-@interface ViewController ()
+@interface ViewController ()<mapViewDataDelegate>
 
 @property(strong,nonatomic)UbiMapDownloader*filedown;
 
 @property(strong,nonatomic)UbiMapView *map;
+
+@property(strong,nonatomic)UbiMapModel *data;
+
+@property(strong,nonatomic)UbiMapModel *startPoint;
+
+@property(strong,nonatomic)UbiMapModel *endPoint;
 
 @end
 
@@ -30,7 +40,7 @@
     
     //初始化mapdonw类
     _filedown = [[UbiMapDownloader alloc] init];
-    NSInteger mapId = 1000361;
+    NSInteger mapId = 1001086;
     //调用资源文件加载
     [_filedown downResourceWithStatus:^(int status) {
         if (status != 3) {
@@ -39,7 +49,10 @@
                 if (status != 3) {
                     //资源，map以准备完成，加载地图
                     _map = [[UbiMapView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64) WithMapId:mapId];
+                    _map.dataDelegate = self;
+                    
                     [self.view addSubview:_map];
+                    
                     
                     //更新点，角度，跟随模式测试
                     
@@ -54,10 +67,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)getclickAreaData:(UbiMapModel *)data{
+    NSLog(@"%d",[data isMemberOfClass:[UbiMapArea class]]);
+    NSLog(@"%d",[data isMemberOfClass:[UbiMapMark class]]);
+    self.data = data;
+}
 //测试数据为随机生成，无规律性
 //移动测试
 - (void)movePoint{
-    [_map refreshPosition:CGPointMake(arc4random()%10/10.f, arc4random()%10/10.f)];
+    [_map refreshPosition:CGPointMake(arc4random()%1000, arc4random()%400)];
 }
 //转向测试
 - (void)rotatoAngle{
@@ -67,9 +85,23 @@
 - (void)followModel{
     [_map followMode];
 }
+- (void)chooseStart{
+    self.startPoint = self.data;
+    [_map setAsStart:_startPoint];
+}
+- (void)chooseEnd{
+    self.endPoint = self.data;
+    [_map setAsEnd:_endPoint];
 
+}
+- (void)renderLine{
+    [_map navigateWithStart:_startPoint andEnd:_endPoint];
+}
+- (void)chooseCurrent{
+    [_map setCurrentPositionAsStart];
+}
 - (void)layoutView{
-    UIButton *point = [[UIButton alloc] initWithFrame:CGRectMake(10.f, HEIGHT - 60.f, (WIDTH-40.f)/3.f, 40.f)];
+    UIButton *point = [[UIButton alloc] initWithFrame:CGRectMake(10.f, HEIGHT - 100.f, (WIDTH-40.f)/3.f, 40.f)];
     [point setTitle:@"移动" forState:UIControlStateNormal];
     [point setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [point addTarget:self action:@selector(movePoint) forControlEvents:UIControlEventTouchUpInside];
@@ -87,6 +119,34 @@
     [follow setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [follow addTarget:self action:@selector(followModel) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:follow];
-                     
+    
+    UIButton *start = [[UIButton alloc] initWithFrame:CGRectMake(10.f, HEIGHT - 50.f, (WIDTH-40.f)/3.f, 40.f)];
+    [start setTitle:@"起点" forState:UIControlStateNormal];
+    [start setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [start addTarget:self action:@selector(chooseStart) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:start];
+    
+    UIButton *current = [[UIButton alloc] initWithFrame:CGRectMake(10.f, HEIGHT - 150.f, (WIDTH-40.f)/3.f, 40.f)];
+    [current setTitle:@"当前点" forState:UIControlStateNormal];
+    [current setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [current addTarget:self action:@selector(chooseCurrent) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:current];
+    
+    
+    
+    UIButton *end = [[UIButton alloc] initWithFrame:CGRectMake(start.frame.origin.x+start.frame.size.width+10.f, start.frame.origin.y, start.frame.size.width, 40.f)];
+    [end setTitle:@"终点" forState:UIControlStateNormal];
+    [end setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [end addTarget:self action:@selector(chooseEnd) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:end];
+    
+    
+    UIButton *line = [[UIButton alloc] initWithFrame:CGRectMake(end.frame.origin.x+end.frame.size.width+10.f, end.frame.origin.y, end.frame.size.width, 40.f)];
+    [line setTitle:@"画线" forState:UIControlStateNormal];
+    [line setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [line addTarget:self action:@selector(renderLine) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:line];
+    
+    
 }
 @end

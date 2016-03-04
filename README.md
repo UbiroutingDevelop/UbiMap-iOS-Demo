@@ -60,3 +60,71 @@ SDK使用有两个过程，首先预下载一个资源包，然后在资源包�
 	
 	_map = [[UbiMapView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64) WithMapId:mapId];
     [self.view addSubview:_map];
+#3 定位点
+##3.1 坐标
+	/**
+ 	 *  更新坐标点
+ 	 *
+ 	 *  @param point locationPoint
+ 	 */
+	- (void)refreshPosition:(CGPoint)point;
+##3.2 角度
+	/**
+	 *  更新角度
+	 *
+	 *  @param angle angle
+	 */
+	- (void)refreshAngle:(float)angle;
+##3.3 跟随模式
+	/**
+	 *  跟随模式，默认关闭
+	 */
+	- (void)followMode;
+#4 地图POI介绍
+识途矢量地图上包含2种POI：
+
+- UbiMapMark，无区域的POI, 即该POI在地图上仅显示为一个单独的图标，常用来表示电梯、ATM、厕所、问讯处等。此类POI在实际环境中占据的区域较少，所以往往用一个单独的图标来表示；
+- UbiMapArea, 区域POI, 即该POI在地图上显示为一个多边形，并且带有店铺图标和文字。常用来表示店铺、停车位等比较大的区域。
+- 上述2类POI均继承自UbiMapModel
+#5 点击事件
+UbiMapView.h文件增加了一个必须实现的代理，mapViewDataDelegate，这个代理是响应点击map事件后返回的模型数据，供导航以及显示信息所用：
+
+@protocol mapViewDataDelegate <NSObject>
+
+	@required	
+	/**
+	 *  点击页面区域返回点击数据
+	 *
+	 *  @param data data为被点击区域信息
+	 */
+	- (void)getclickAreaData:(UbiMapModel *)data;
+
+@end
+#6 导航
+	/**
+	 *  设置当前点为导航起点
+	 */
+	- (void)setCurrentPositionAsStart;
+	/**
+	 *  设置导航起点
+	 *
+	 *  @param point 起点数据模型对象
+	 */
+	- (void)setAsStart:(UbiMapModel *)point;
+	/**
+	 *  设置导航终点
+	 *
+	 *  @param point 终点数据模型对象
+	 */
+	- (void)setAsEnd:(UbiMapModel *)point;
+	/**
+	 *  绘制导航路线
+	 *
+	 *  @param start 起点数据模型对象 （若设置当前点为起点，start穿nil）
+	 *  @param end   终点数据模型对象
+	 */
+	- (void)navigateWithStart:(UbiMapModel *)start andEnd:(UbiMapModel *)end;
+#7 要点说明
+1.注意,代理返回的UbiMapRegional对象其实是UbiMapArea或者UbiMapMark的一个实例对象，如果要使用子类的特有属性，请自行判断代理返回的UbiMapRegional对象，是UbiMapArea，还是UbiMapMark，然后再使用对应的属性。（isMemberOfClass:）
+
+2.导入SDK只在，在shader.bundle文件中删除掉info.plist文件，否则影响程序上传。

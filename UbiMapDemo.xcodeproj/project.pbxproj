@@ -19,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CFD2F7171C895D35001BCAA8 /* UbiMapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapModel.h; sourceTree = "<group>"; };
 		CFD9D0DE1C7F056F00C6CFD2 /* UbiMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD9D0E21C7F056F00C6CFD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFD9D0E41C7F056F00C6CFD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,6 +36,8 @@
 		CFD9D0FF1C7F059D00C6CFD2 /* libSTUBIMap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSTUBIMap.a; sourceTree = "<group>"; };
 		CFD9D1001C7F059D00C6CFD2 /* Shader.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Shader.bundle; sourceTree = "<group>"; };
 		CFD9D1031C7F05AB00C6CFD2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CFDE1E891C893C15009BBB11 /* UbiMapArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapArea.h; sourceTree = "<group>"; };
+		CFDE1E8A1C893C15009BBB11 /* UbiMapMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapMark.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,9 @@
 		CFD9D0F91C7F059D00C6CFD2 /* STUBIMap */ = {
 			isa = PBXGroup;
 			children = (
+				CFD2F7171C895D35001BCAA8 /* UbiMapModel.h */,
+				CFDE1E891C893C15009BBB11 /* UbiMapArea.h */,
+				CFDE1E8A1C893C15009BBB11 /* UbiMapMark.h */,
 				CFD9D0FC1C7F059D00C6CFD2 /* UbiLoader.h */,
 				CFD9D0FD1C7F059D00C6CFD2 /* UbiMapDownloader.h */,
 				CFD9D0FE1C7F059D00C6CFD2 /* UbiMapView.h */,
