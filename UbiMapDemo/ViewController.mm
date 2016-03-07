@@ -12,7 +12,7 @@
 #import "UbiMapModel.h"
 #import "UbiMapArea.h"
 #import "UbiMapMark.h"
-
+#import "UbiMapFile.h"
 
 #define HEIGHT self.view.frame.size.height
 
@@ -29,6 +29,8 @@
 @property(strong,nonatomic)UbiMapModel *startPoint;
 
 @property(strong,nonatomic)UbiMapModel *endPoint;
+
+@property(strong,nonatomic)UbiMapFile *file;
 
 @end
 
@@ -53,7 +55,6 @@
                     
                     [self.view addSubview:_map];
                     
-                    
                     //更新点，角度，跟随模式测试
                     
                     [self layoutView];
@@ -61,6 +62,12 @@
             }];
         }
     }];
+    //不加载地图，只读map文件信息
+//    _file = [[UbiMapFile alloc]initWithMapId:1001086];
+//    UbiMapFile *file = _file;
+//    _file.dataLoading = ^{
+//        NSLog(@"%@",file.allData);
+//    };
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF284D521C8D754F00586C33 /* libubimap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF284D511C8D754F00586C33 /* libubimap.a */; };
 		CFD9D0E31C7F056F00C6CFD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD9D0E21C7F056F00C6CFD2 /* main.m */; };
 		CFD9D0E61C7F056F00C6CFD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD9D0E51C7F056F00C6CFD2 /* AppDelegate.m */; };
 		CFD9D0E91C7F056F00C6CFD2 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFD9D0E81C7F056F00C6CFD2 /* ViewController.mm */; };
 		CFD9D0EC1C7F056F00C6CFD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD9D0EA1C7F056F00C6CFD2 /* Main.storyboard */; };
 		CFD9D0EE1C7F056F00C6CFD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFD9D0ED1C7F056F00C6CFD2 /* Assets.xcassets */; };
 		CFD9D0F11C7F056F00C6CFD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD9D0EF1C7F056F00C6CFD2 /* LaunchScreen.storyboard */; };
-		CFD9D1011C7F059D00C6CFD2 /* libSTUBIMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD9D0FF1C7F059D00C6CFD2 /* libSTUBIMap.a */; };
 		CFD9D1021C7F059D00C6CFD2 /* Shader.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CFD9D1001C7F059D00C6CFD2 /* Shader.bundle */; };
 		CFD9D1041C7F05AB00C6CFD2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD9D1031C7F05AB00C6CFD2 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF284D501C8D557600586C33 /* UbiMapFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapFile.h; sourceTree = "<group>"; };
+		CF284D511C8D754F00586C33 /* libubimap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libubimap.a; sourceTree = "<group>"; };
 		CFD2F7171C895D35001BCAA8 /* UbiMapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapModel.h; sourceTree = "<group>"; };
 		CFD9D0DE1C7F056F00C6CFD2 /* UbiMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD9D0E21C7F056F00C6CFD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -33,7 +35,6 @@
 		CFD9D0FC1C7F059D00C6CFD2 /* UbiLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiLoader.h; sourceTree = "<group>"; };
 		CFD9D0FD1C7F059D00C6CFD2 /* UbiMapDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapDownloader.h; sourceTree = "<group>"; };
 		CFD9D0FE1C7F059D00C6CFD2 /* UbiMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapView.h; sourceTree = "<group>"; };
-		CFD9D0FF1C7F059D00C6CFD2 /* libSTUBIMap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSTUBIMap.a; sourceTree = "<group>"; };
 		CFD9D1001C7F059D00C6CFD2 /* Shader.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Shader.bundle; sourceTree = "<group>"; };
 		CFD9D1031C7F05AB00C6CFD2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		CFDE1E891C893C15009BBB11 /* UbiMapArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapArea.h; sourceTree = "<group>"; };
@@ -46,7 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD9D1041C7F05AB00C6CFD2 /* libz.tbd in Frameworks */,
-				CFD9D1011C7F059D00C6CFD2 /* libSTUBIMap.a in Frameworks */,
+				CF284D521C8D754F00586C33 /* libubimap.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,9 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				CFD9D0F81C7F059D00C6CFD2 /* include */,
-				CFD9D0FF1C7F059D00C6CFD2 /* libSTUBIMap.a */,
 				CFD9D1001C7F059D00C6CFD2 /* Shader.bundle */,
 				CFD9D0E41C7F056F00C6CFD2 /* AppDelegate.h */,
+				CF284D511C8D754F00586C33 /* libubimap.a */,
 				CFD9D0E51C7F056F00C6CFD2 /* AppDelegate.m */,
 				CFD9D0E71C7F056F00C6CFD2 /* ViewController.h */,
 				CFD9D0E81C7F056F00C6CFD2 /* ViewController.mm */,
@@ -108,6 +109,7 @@
 		CFD9D0F91C7F059D00C6CFD2 /* STUBIMap */ = {
 			isa = PBXGroup;
 			children = (
+				CF284D501C8D557600586C33 /* UbiMapFile.h */,
 				CFD2F7171C895D35001BCAA8 /* UbiMapModel.h */,
 				CFDE1E891C893C15009BBB11 /* UbiMapArea.h */,
 				CFDE1E8A1C893C15009BBB11 /* UbiMapMark.h */,
