@@ -95,8 +95,14 @@ SDK使用有两个过程，首先预下载一个资源包，然后在资源包�
 识途矢量地图上包含2种POI：
 
 - UbiMapMark，无区域的POI, 即该POI在地图上仅显示为一个单独的图标，常用来表示电梯、ATM、厕所、问讯处等。此类POI在实际环境中占据的区域较少，所以往往用一个单独的图标来表示；
+ 
+![alt:markexample](http://www.ubirouting.com/imageUse/ubimap_mark_example.jpg)
+
 - UbiMapArea, 区域POI, 即该POI在地图上显示为一个多边形，并且带有店铺图标和文字。常用来表示店铺、停车位等比较大的区域。
-- 上述2类POI均继承自UbiMapModel
+
+![alt:area example](http://www.ubirouting.com/imageUse/ubimap_area_example.jpg)
+
+上述2类POI均继承自UbiMapModel.
 
 #5 点击事件
 
