@@ -25,13 +25,17 @@ info.plist文件：SDK加载资源采用http模式，info.plist文件中需要�
 SDK使用有两个过程，首先预下载一个资源包，然后在资源包完整的情况下载相应的地图文件，资源包需要每次检查是否需要更新，一般只需加载一次即可。
 
 调用UbiLoader.h进行key验证,一般放在appdelegate.m中进行验证
+```objective-c
 
 	#import "UbiLoader.h"
 	
 	// 填入您的Key
 	[UbiLoader registWithKey:@"850ad59d5a41065a75fa33672cad5004"];
+```
 	
 资源文件，地图文件加载
+
+```objective-c
 
 	#import "UbiMapDownloader.h"
 	
@@ -52,18 +56,22 @@ SDK使用有两个过程，首先预下载一个资源包，然后在资源包�
     	}];
 	}
 	//status值说明，请查阅SDK注释
+```
 	
 地图文件加载：
 
+```objective-c
 	@property(strong,nonatomic)UbiMapView *map;
 	
-	
 	_map = [[UbiMapView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64) WithMapId:mapId];
-    [self.view addSubview:_map];
+	[self.view addSubview:_map];
+```
     
 #3 定位点
 
 ##3.1 坐标
+
+```objective-c
 
 	/**
  	 *  更新坐标点
@@ -71,19 +79,22 @@ SDK使用有两个过程，首先预下载一个资源包，然后在资源包�
  	 *  @param point locationPoint
  	 */
 	- (void)refreshPosition:(CGPoint)point;
-	
+```
+
 ##3.2 角度
 
+```objective-c
 	/**
 	 *  更新角度
 	 *
 	 *  @param angle angle
 	 */
 	- (void)refreshAngle:(float)angle;
-	
+```
+
 ##3.3 跟随模式
 
-```Object-C
+```objective-c
 	/**
 	 *  跟随模式，默认关闭
 	 */
@@ -108,6 +119,7 @@ SDK使用有两个过程，首先预下载一个资源包，然后在资源包�
 
 UbiMapView.h文件增加了一个必须实现的代理，mapViewDataDelegate，这个代理是响应点击map事件后返回的模型数据，供导航以及显示信息所用：
 
+```objective-c
 	@protocol mapViewDataDelegate <NSObject>
 
 	@required	
@@ -119,8 +131,11 @@ UbiMapView.h文件增加了一个必须实现的代理，mapViewDataDelegate，�
 	- (void)getclickAreaData:(UbiMapModel *)data;
 
 	@end
+```
 
 #6 导航
+
+```objective-c
 
 	/**
 	 *  设置当前点为导航起点
@@ -145,7 +160,8 @@ UbiMapView.h文件增加了一个必须实现的代理，mapViewDataDelegate，�
 	 *  @param end   终点数据模型对象
 	 */
 	- (void)navigateWithStart:(UbiMapModel *)start andEnd:(UbiMapModel *)end;
-	
+```
+
 #7 要点说明
 
 1.注意,代理返回的UbiMapRegional对象其实是UbiMapArea或者UbiMapMark的一个实例对象，如果要使用子类的特有属性，请自行判断代理返回的UbiMapRegional对象，是UbiMapArea，还是UbiMapMark，然后再使用对应的属性。（isMemberOfClass:）
