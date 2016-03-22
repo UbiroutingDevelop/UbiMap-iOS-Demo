@@ -32,6 +32,8 @@
 
 @property(strong,nonatomic)UbiMapFile *file;
 
+@property(strong,nonatomic)NSMutableArray *array;
+
 @end
 
 @implementation ViewController
@@ -39,7 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"UbiMap";
-    
+    _array = [NSMutableArray array];
     //初始化mapdonw类
     _filedown = [[UbiMapDownloader alloc] init];
     NSInteger mapId = 1001086;
@@ -64,10 +66,13 @@
     }];
     //不加载地图，只读map文件信息
 //    _file = [[UbiMapFile alloc]initWithMapId:1001086];
-//    UbiMapFile *file = _file;
+//    __weak UbiMapFile *file = _file;
 //    _file.dataLoading = ^{
 //        NSLog(@"%@",file.allData);
 //    };
+    
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +83,7 @@
     NSLog(@"%d",[data isMemberOfClass:[UbiMapArea class]]);
     NSLog(@"%d",[data isMemberOfClass:[UbiMapMark class]]);
     self.data = data;
+    [_array addObject:data];
 }
 //测试数据为随机生成，无规律性
 //移动测试
@@ -106,6 +112,13 @@
 }
 - (void)chooseCurrent{
     [_map setCurrentPositionAsStart];
+}
+- (void)tagTest{
+    [_map signSpecifiedPlace:_array WithImage:[UIImage imageNamed:@"location"]];
+    [_array removeAllObjects];
+}
+- (void)tagCancel{
+    [_map signRenderCancel];
 }
 - (void)layoutView{
     UIButton *point = [[UIButton alloc] initWithFrame:CGRectMake(10.f, HEIGHT - 100.f, (WIDTH-40.f)/3.f, 40.f)];
@@ -139,8 +152,6 @@
     [current addTarget:self action:@selector(chooseCurrent) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:current];
     
-    
-    
     UIButton *end = [[UIButton alloc] initWithFrame:CGRectMake(start.frame.origin.x+start.frame.size.width+10.f, start.frame.origin.y, start.frame.size.width, 40.f)];
     [end setTitle:@"终点" forState:UIControlStateNormal];
     [end setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -154,6 +165,16 @@
     [line addTarget:self action:@selector(renderLine) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:line];
     
+    UIButton *tagAdd = [[UIButton alloc] initWithFrame:CGRectMake(10.f+current.frame.size.width, HEIGHT - 150.f, (WIDTH-40.f)/3.f, 40.f)];
+    [tagAdd setTitle:@"添加标记" forState:UIControlStateNormal];
+    [tagAdd setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [tagAdd addTarget:self action:@selector(tagTest) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:tagAdd];
     
+    UIButton *tagcancel = [[UIButton alloc] initWithFrame:CGRectMake(tagAdd.frame.origin.x+tagAdd.frame.size.width, HEIGHT - 150.f, (WIDTH-40.f)/3.f, 40.f)];
+    [tagcancel setTitle:@"取消标记" forState:UIControlStateNormal];
+    [tagcancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [tagcancel addTarget:self action:@selector(tagCancel) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:tagcancel];
 }
 @end
