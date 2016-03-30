@@ -44,7 +44,7 @@
     _array = [NSMutableArray array];
     //初始化mapdonw类
     _filedown = [[UbiMapDownloader alloc] init];
-    NSInteger mapId = 1001086;
+    NSInteger mapId = 2001086;
     //调用资源文件加载
     [_filedown downResourceWithStatus:^(int status) {
         if (status != 3) {
@@ -80,8 +80,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)getclickAreaData:(UbiMapModel *)data{
-    NSLog(@"%d",[data isMemberOfClass:[UbiMapArea class]]);
-    NSLog(@"%d",[data isMemberOfClass:[UbiMapMark class]]);
+    //NSLog(@"%d",[data isMemberOfClass:[UbiMapArea class]]);
+    //NSLog(@"%d",[data isMemberOfClass:[UbiMapMark class]]);
     self.data = data;
     [_array addObject:data];
 }

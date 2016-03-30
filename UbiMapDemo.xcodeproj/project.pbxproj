@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF6D9F961CA138B300F1726C /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6D9F951CA138B300F1726C /* location.png */; };
 		CF6D9FA51CA14CEB00F1726C /* Shader.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CF6D9FA31CA14CEB00F1726C /* Shader.bundle */; };
-		CF6D9FA91CA1507F00F1726C /* libubimap_v1.4_build20160322.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6D9FA81CA1507F00F1726C /* libubimap_v1.4_build20160322.a */; };
+		CF91B7A91CABD180003920EF /* libubimap_v1.4.1_build20160330.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF91B7A81CABD180003920EF /* libubimap_v1.4.1_build20160330.a */; };
 		CFD9D0E31C7F056F00C6CFD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD9D0E21C7F056F00C6CFD2 /* main.m */; };
 		CFD9D0E61C7F056F00C6CFD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD9D0E51C7F056F00C6CFD2 /* AppDelegate.m */; };
 		CFD9D0E91C7F056F00C6CFD2 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFD9D0E81C7F056F00C6CFD2 /* ViewController.mm */; };
@@ -30,7 +30,7 @@
 		CF6D9FA01CA14CEB00F1726C /* UbiMapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapModel.h; sourceTree = "<group>"; };
 		CF6D9FA11CA14CEB00F1726C /* UbiMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UbiMapView.h; sourceTree = "<group>"; };
 		CF6D9FA31CA14CEB00F1726C /* Shader.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Shader.bundle; sourceTree = "<group>"; };
-		CF6D9FA81CA1507F00F1726C /* libubimap_v1.4_build20160322.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libubimap_v1.4_build20160322.a; sourceTree = "<group>"; };
+		CF91B7A81CABD180003920EF /* libubimap_v1.4.1_build20160330.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libubimap_v1.4.1_build20160330.a; sourceTree = "<group>"; };
 		CFD9D0DE1C7F056F00C6CFD2 /* UbiMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD9D0E21C7F056F00C6CFD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFD9D0E41C7F056F00C6CFD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -49,8 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF91B7A91CABD180003920EF /* libubimap_v1.4.1_build20160330.a in Frameworks */,
 				CFD9D1041C7F05AB00C6CFD2 /* libz.tbd in Frameworks */,
-				CF6D9FA91CA1507F00F1726C /* libubimap_v1.4_build20160322.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +60,7 @@
 		CF6D9F971CA14CEB00F1726C /* ubiMap */ = {
 			isa = PBXGroup;
 			children = (
-				CF6D9FA81CA1507F00F1726C /* libubimap_v1.4_build20160322.a */,
+				CF91B7A81CABD180003920EF /* libubimap_v1.4.1_build20160330.a */,
 				CF6D9F981CA14CEB00F1726C /* include */,
 				CF6D9FA31CA14CEB00F1726C /* Shader.bundle */,
 			);
@@ -318,6 +318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UbiMapDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -335,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UbiMapDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
